@@ -1,6 +1,5 @@
 package BancoDigital;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UIContaDigital {
@@ -11,10 +10,10 @@ public class UIContaDigital {
         int contaC = scan.nextInt();
         System.out.println("Digite sua senha: ");
         int senha = scan.nextInt();
-            while (senha != contaC){
-                System.out.println("Senha errada!");
-                senha = scan.nextInt();
-            }
+        while (senha != contaC) {
+            System.out.println("Senha errada! Sua senha tenho o mesmo número que sua CC.");
+            senha = scan.nextInt();
+        }
         contas.listaDeContas
                 .stream()
                 .filter(conta -> conta.contaCorrente == contaC)
@@ -52,12 +51,31 @@ public class UIContaDigital {
                 contas.listaDeContas
                         .stream()
                         .filter(conta -> conta.contaCorrente == contaC)
-                        .forEach(conta -> System.out.println("Você tem disponivel em seu cartão o valor de: R$" +
-                                conta.saldoCartao));
+                        .forEach(conta -> System.out.println("Você tem um limite de: " + conta.saldoEmprestimo));
+                AbaEmprestimo();
             } else if (escolhaDaOpcao == 5) {
                 System.out.println("Sessão encerrada!");
                 break;
             }
+        }
+    }
+
+    private void AbaEmprestimo() {
+
+        Contas contas = new Contas();
+        Scanner scan = new Scanner(System.in);
+        System.out.println("(1) Saque emprestimo \n(2) Voltar");
+        double opcaoDigitada = scan.nextDouble();
+        if (opcaoDigitada == 1) {
+            System.out.println("Digite o valor que você que sacar: ");
+            double valorDoSaque = scan.nextDouble();
+            System.out.println("Emprestimo efetuado com sucesso no valor de: " + valorDoSaque);
+            double total = (valorDoSaque - contas.saldoEmprestimo);
+            System.out.println("Seu saldo atual é de: " + total);
+        } else if (opcaoDigitada == 2) {
+            System.out.println("Selecione uma das opções: ");
+        } else if (opcaoDigitada < 1 || opcaoDigitada > 2 ) {
+            System.out.println("Opção informada invalida! Informe uma das opcoes abaixo:");
         }
     }
 }
