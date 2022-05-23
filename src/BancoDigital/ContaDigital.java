@@ -8,16 +8,14 @@ public class ContaDigital {
     int agencia;
     double saldo;
     double saldoCartao;
-
     double saldoEmprestimo;
-
     List<String> extratoCartaoC;
 
     ContaDigital() {
-
     }
 
-    public ContaDigital(String nome, int contaCorrente, int agencia, double saldo, double saldoCartao, double saldoEmprestimo, List<String> extratoCartaoC) {
+    public ContaDigital(String nome, int contaCorrente, int agencia, double saldo, double saldoCartao,
+                        double saldoEmprestimo, List<String> extratoCartaoC) {
         this.nome = nome;
         this.contaCorrente = contaCorrente;
         this.agencia = agencia;
@@ -30,18 +28,23 @@ public class ContaDigital {
     public String getNome() {
         return nome;
     }
+
     public int getContaCorrente() {
         return contaCorrente;
     }
+
     public int getAgencia() {
         return agencia;
     }
+
     public double getSaldo() {
         return saldo;
     }
+
     public double getSaldoCartao() {
         return saldoCartao;
     }
+
     public double getSaldoEmprestimo() {
         return saldoEmprestimo;
     }
