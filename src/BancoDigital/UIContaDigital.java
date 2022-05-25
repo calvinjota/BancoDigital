@@ -4,7 +4,7 @@ import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class UIContaDigital {
-    private final Contas contas = new Contas();
+    protected final Contas contas = new Contas();
     private  ContaDigital contaSelecionada;
     UIContaDigital() {
         Scanner scan = new Scanner(System.in);
@@ -40,22 +40,13 @@ public class UIContaDigital {
                 System.out.println("Seu saldo é: " +
                         new DecimalFormat("#,##0.00").format(contaSelecionada.saldo));
             } else if (escolhaDaOpcao == 2) {
-                contas.listaDeContas
-                        .stream()
-                        .filter(conta -> conta.contaCorrente == contaC)
-                        .forEach(conta -> System.out.println("Você tem disponivel em seu cartão o valor de: R$" +
-                                new DecimalFormat("#,##0.00").format(conta.saldoCartao)));
+                System.out.println("Você tem disponivel em seu cartão de credito o valor de: R$" +
+                        new DecimalFormat("#,##0.00").format(contaSelecionada.saldoCartao));
             } else if (escolhaDaOpcao == 3) {
-                contas.listaDeContas
-                        .stream()
-                        .filter(conta -> conta.contaCorrente == contaC)
-                        .forEach(conta -> System.out.println(conta.extratoCartaoC));
+                System.out.println(contaSelecionada.extratoCartaoC);
             } else if (escolhaDaOpcao == 4) {
-                contas.listaDeContas
-                        .stream()
-                        .filter(conta -> conta.contaCorrente == contaC)
-                        .forEach(conta -> System.out.println("Você tem um limite de: R$" +
-                                new DecimalFormat("#,##0.00").format(conta.saldoEmprestimo)));
+                System.out.println("Você tem um limite de: R$" +
+                        new DecimalFormat("#,##0.00").format(contaSelecionada.saldoEmprestimo));
                 AbaEmprestimo();
             } else if (escolhaDaOpcao == 5) {
                 System.out.println("Sessão encerrada!");
